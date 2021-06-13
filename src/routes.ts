@@ -4,7 +4,7 @@ import passport from './discordPassport'
 const routes = Router();
 
 routes.get('/', (req, res) => {
-    return res.json({ message: 'Fala fi' });
+    return res.json({ message: 'Fala fi', user: req.user });
 });
 
 routes.get('/teste', passport.authenticate('discord', {
