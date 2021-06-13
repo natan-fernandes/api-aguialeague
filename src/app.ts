@@ -16,7 +16,7 @@ class App {
         this.server.use(express.json());
         this.server.use(Session({
             secret: "secret",
-            resave: false,
+            resave: true,
             saveUninitialized: false
         }));
         this.server.use(passport.initialize());
