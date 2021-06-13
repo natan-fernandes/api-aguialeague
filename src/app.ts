@@ -1,5 +1,7 @@
 import express from 'express';
 import routes from './routes';
+import Session from 'express-session';
+import passport from './discordPassport';
 
 class App {
     public server;
@@ -9,9 +11,16 @@ class App {
         this.middlewares();
         this.routes();
     }
-
+    
     middlewares() {
         this.server.use(express.json());
+        this.server.use(Session({
+            secret: "secret",
+            resave: false,
+            saveUninitialized: false
+        }));
+        this.server.use(passport.initialize());
+        this.server.use(passport.session());
     }
 
     routes() {

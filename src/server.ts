@@ -1,6 +1,11 @@
-import app from './app';
-import { default as c } from './constantes';
+import * as dotenv from 'dotenv';
+dotenv.config({ path: __dirname+'./../.env' });
 
-app.listen(c.PORTA, () => {
-    console.log(`Rodando na porta ${c.PORTA}`); 
+import app from './app';
+
+app.listen(process.env.PORTA, () => {
+    console.log(`Rodando na porta ${process.env.PORTA}`); 
 })
+.on('error', (err) => {
+    console.log(`Deu erro aqui fi: ${err}`);
+});
